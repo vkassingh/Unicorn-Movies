@@ -1,0 +1,43 @@
+/* MovieDetails.css */
+
+* {
+  font-family: Lato;
+}
+
+/* Movie card container */
+.movie-card {
+  padding: 16px;
+  color: white;
+}
+
+/* Movie poster */
+.movie-poster {
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Movie title */
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Movie details */
+.movie-details {
+  font-size: 16px;
+}
+
+/* Responsive layout adjustments */
+@media screen and (max-width: 768px) {
+  .movie-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .movie-title {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 16px;
+}
+
+.movie-search-container {
+  margin: 5px 10px 20px 30px;
+  padding-top: 5px;
+}
+
+.filters {
+  margin-top: 8px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* styles.css (or any other CSS file you are using) */
+
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Pagination buttons */
+.pagination button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Hover effect */
+.pagination button:hover {
+  background-color: grey;
+}
+
+/* Responsive layout adjustments */
+@media screen and (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .pagination button {
+    margin: 5px;
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-btn {
+  background: #e50914;
+  font-size: 16px;
+  color: white;
+
+  padding: 5px 5px;
+}
+
+input {
+  font-size: 16px;
+  padding: 4px 4px;
+}
+
+/* heading animation */
+.fade-in-heading {
+  opacity: 0; /* Start with 0 opacity */
+  animation: fadeIn 1.5s ease-in-out forwards; /* Apply the fadeIn animation */
+  color: #e50914;
+  padding-top: 0 !important;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1; /* At the end of the animation, opacity is 1 */
+  }
+}
+
+.header {
+  background: #000000 !important;
+  padding: 15px 8px;
+}
+
+html {
+  background: #181818;
+}

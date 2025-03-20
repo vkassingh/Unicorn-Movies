@@ -1,0 +1,23 @@
+/* WatchLaterList.css */
+
+.watch-later-list {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: white;
+}
+
+.watch-later-list h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.watch-later-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.watch-later-list li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
