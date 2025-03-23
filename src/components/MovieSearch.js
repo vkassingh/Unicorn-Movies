@@ -68,13 +68,12 @@ const MovieSearch = () => {
       <div className="header">
         <h2 className="fade-in-heading">MoviesWala</h2>
       </div>
-      
+
       <div className="movie-search-container">
-      <p id="desc">You can Search movies, Sort, Add to Watch Later! </p>
-      <br/>
+        <p id="desc">You can Search movies, Sort, Add to Watch Later! </p>
+        <br />
         <div className="search-controls">
           <div className="search-container">
-    
             <input
               className="search-input"
               type="text"
@@ -96,6 +95,8 @@ const MovieSearch = () => {
           </div>
         </div>
 
+        <WatchLaterList watchLater={watchLater} />
+
         <div className="movie-list">
           {movies.map((movie) => (
             <div key={movie.imdbID} className="movie-card">
@@ -104,9 +105,7 @@ const MovieSearch = () => {
                 Add to Watch Later
               </button>
               {watchLater.some((item) => item.imdbID === movie.imdbID) ? (
-                <button
-                  onClick={() => handleRemoveFromWatchLater(movie.imdbID)}
-                >
+                <button onClick={() => handleRemoveFromWatchLater(movie.imdbID)}>
                   Remove from Watch Later
                 </button>
               ) : null}
@@ -114,14 +113,34 @@ const MovieSearch = () => {
           ))}
         </div>
 
-        <WatchLaterList watchLater={watchLater} />
-
+        {/* Updated Pagination */}
         <div className="pagination">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button key={index + 1} onClick={() => handlePageChange(index + 1)}>
-              {index + 1}
-            </button>
-          ))}
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+
+          {Array.from({ length: totalPages }, (_, index) => {
+            const page = index + 1;
+            return (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={currentPage === page ? "active" : ""}
+              >
+                {page}
+              </button>
+            );
+          })}
+
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
       </div>
     </>
