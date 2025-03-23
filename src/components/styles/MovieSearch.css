@@ -2,7 +2,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
+
 
 p {
   font-size: 16px;
@@ -24,6 +26,8 @@ p {
   justify-content: center;
   margin-top: 20px;
 }
+
+
 
 /* styles.css (or any other CSS file you are using) */
 
@@ -83,8 +87,14 @@ input {
 .fade-in-heading {
   opacity: 0; /* Start with 0 opacity */
   animation: fadeIn 1.5s ease-in-out forwards; /* Apply the fadeIn animation */
-  color: #e50914;
+  color: white;
   padding-top: 0 !important;
+  margin-left: 25px;
+
+}
+
+#desc {
+  color:white !important;
 }
 
 @keyframes fadeIn {

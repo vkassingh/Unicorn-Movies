@@ -66,15 +66,19 @@ const MovieSearch = () => {
   return (
     <>
       <div className="header">
-        <h2 className="fade-in-heading">🎬 MOVIEFLIX</h2>
+        <h2 className="fade-in-heading">MoviesWala</h2>
       </div>
+      
       <div className="movie-search-container">
+      <p id="desc">You can Search movies, Sort, Add to Watch Later! </p>
+      <br/>
         <div className="search-controls">
           <div className="search-container">
+    
             <input
               className="search-input"
               type="text"
-              placeholder="Search for a movie..."
+              placeholder="Search a movie like Batman"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
