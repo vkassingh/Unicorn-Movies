@@ -66,7 +66,7 @@ const MovieSearch = () => {
   return (
     <>
       <div className="header">
-        <h2 className="fade-in-heading">MoviesWala</h2>
+        <h2 className="fade-in-heading">Unicorn Movies</h2>
       </div>
 
       <div className="movie-search-container">
