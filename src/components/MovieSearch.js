@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MovieDetails from "./MovieDetails";
 import WatchLaterList from "./WatchLaterList";
@@ -7,39 +7,34 @@ import "./styles/MovieSearch.css";
 const MovieSearch = () => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [sortBy, setSortBy] = useState("Title");
   const [watchLater, setWatchLater] = useState([]);
 
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `https://www.omdbapi.com/?s=${query}&apikey=597e4123&page=${currentPage}&sort=${sortBy}`
+        `https://www.omdbapi.com/?s=${query}&apikey=597e4123&type=movie`
       );
-      setMovies(response.data.Search);
-      setTotalPages(Math.ceil(response.data.totalResults / 10));
+      setMovies(response.data.Search || []);
     } catch (error) {
       console.error(error);
       setMovies([]);
-      setTotalPages(1);
     }
   };
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    handleSearch();
-  };
+  useEffect(() => {
+    if (query) {
+      handleSearch();
+    } else {
+      setMovies([]);
+    }
+  }, [query]);
 
   const handleSortBy = (e) => {
     const selectedSortBy = e.target.value;
     setSortBy(selectedSortBy);
-    setCurrentPage(1);
 
-    // Clone the movies array before sorting to avoid mutating the original state
     const sortedMovies = [...movies];
-
-    // Sort the movies array based on the selected sorting option
     sortedMovies.sort((a, b) => {
       if (selectedSortBy === "Title") {
         return a.Title.localeCompare(b.Title);
@@ -48,9 +43,7 @@ const MovieSearch = () => {
       }
       return 0;
     });
-
-    // Update the movies state with the sorted array
-    setMovies([...sortedMovies]);
+    setMovies(sortedMovies);
   };
 
   const handleAddToWatchLater = (movie) => {
@@ -111,36 +104,6 @@ const MovieSearch = () => {
               ) : null}
             </div>
           ))}
-        </div>
-
-        {/* Updated Pagination */}
-        <div className="pagination">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-
-          {Array.from({ length: totalPages }, (_, index) => {
-            const page = index + 1;
-            return (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={currentPage === page ? "active" : ""}
-              >
-                {page}
-              </button>
-            );
-          })}
-
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
         </div>
       </div>
     </>
